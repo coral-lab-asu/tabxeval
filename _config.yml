@@ -1,7 +1,7 @@
 # Setup
 title:        TabXEval
 tagline:      A novel rubric based evaluation approach which is a comprehensive, explainable framework for evaluating tables.
-baseurl:      ""
+baseurl:      "https://coral-lab-asu.github.io/tabxeval/"
 paginate:     1
 locale:       "en"
 
