@@ -1,0 +1,18 @@
+# Setup
+title:        TabXEval
+tagline:      A novel rubric based evaluation approach which is a comprehensive, explainable framework for evaluating tables.
+baseurl:      ""
+paginate:     1
+locale:       "en"
+
+# About/contact
+author:
+  name:       Vihang Pancholi
+  url:        https://www.linkedin.com/in/vihang-pancholi/
+
+# Gems
+gems:
+  - jekyll-paginate
+
+#Others
+markdown: kramdown

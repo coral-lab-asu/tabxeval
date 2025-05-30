@@ -1,0 +1,152 @@
+---
+layout: default
+title: {{ site.name }}
+---
+
+<div id="home">
+  <!-- <h1>Blog Posts</h1>
+  <ul class="posts">
+    {% for post in site.posts %}
+      <li><span>{{ post.date | date_to_string }}</span> &raquo; <a href="{{ site.baseurl }}{{ post.url }}">{{ post.title }}</a></li>
+    {% endfor %}
+  </ul> -->
+
+  <h1> Abstract</h1>
+  <p> Evaluating tables qualitatively & quantitatively presents a significant challenge, as traditional metrics often fail to capture nuanced structural and content discrepancies. To address this, we introduce a novel, methodical rubric integrating multi-level structural descriptors with fine-grained contextual quantification, thereby establishing a robust foundation for comprehensive table comparison. Building on this foundation, we propose TabXEval, an eXhaustive and eXplainable two-phase evaluation framework. TabXEval initially aligns reference tables structurally via TabAlign & subsequently conducts a systematic semantic and syntactic comparison using TabCompare; this approach clarifies the evaluation process and pinpoints subtle discrepancies overlooked by conventional methods. The efficacy of this framework is assessed using TabXBench, a novel, diverse, multi-domain benchmark we developed, featuring realistic table perturbations and humanannotated assessments. Finally, a systematic analysis of existing evaluation methods through sensitivity-specificity trade-offs demonstrates the qualitative and quantitative effectiveness of TabXEval across diverse table-related tasks and domains, paving the way for future innovations in explainable table evaluation.</p>
+
+
+  <h1> Framework Overview</h1>
+  <p><img src="images/MainDiagram.png"> </p>
+
+  <h1> TabXBench</h1>
+  <p><img src="images/TabXBench.png"> </p>
+  
+  <h1>  Results</h1>
+  <table>
+    <caption style="caption-side: bottom; text-align: left; margin-top: 10px;">
+      Correlation between automatic rankings and human judgments. Higher Spearman’s ρ, Kendall’s τ, Weighted Kendall’s τ<sup>†</sup>, and RBO values indicate better agreement, while lower Spearman’s Footrule values are preferable.
+    </caption>
+    <thead>
+      <tr class="double-border-top">
+        <th rowspan="2" style="text-align: left; vertical-align: middle;"><strong>Metrics</strong></th>
+        <th style="text-align: center;"><strong>Spearman's</strong></th>
+        <th style="text-align: center;"><strong>Kendall's</strong></th>
+        <th style="text-align: center;"><strong>W-Kendall's</strong></th>
+        <th style="text-align: center;"><strong>RBO</strong></th>
+        <th style="text-align: center;"><strong>Spearman's</strong></th>
+      </tr>
+      <tr class="single-border-bottom">
+        <td style="text-align: center;">ρ ↑</td>
+        <td style="text-align: center;">τ ↑</td>
+        <td style="text-align: center;">τ<sup>†</sup> ↑</td>
+        <td style="text-align: center;">↑</td>
+        <td style="text-align: center;"><strong>Footrule</strong> ↓</td>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td style="text-align: left;"><strong><span class="small-caps">EM</span></strong></td>
+        <td>0.18</td>
+        <td>0.16</td>
+        <td>0.16</td>
+        <td>0.26</td>
+        <td>0.57</td>
+      </tr>
+      <tr>
+        <td style="text-align: left;"><strong><span class="small-caps">chrF</span></strong></td>
+        <td>0.12</td>
+        <td>0.11</td>
+        <td>0.08</td>
+        <td>0.25</td>
+        <td>0.59</td>
+      </tr>
+      <tr>
+        <td style="text-align: left;"><strong><span class="small-caps">H-Score</span></strong></td>
+        <td>0.14</td>
+        <td>0.11</td>
+        <td>0.09</td>
+        <td>0.28</td>
+        <td>0.51</td>
+      </tr>
+      <tr>
+        <td style="text-align: left;"><strong><span class="small-caps">BERTScore</span></strong></td>
+        <td>0.19</td>
+        <td>0.15</td>
+        <td>0.13</td>
+        <td>0.25</td>
+        <td>0.57</td>
+      </tr>
+      <tr>
+        <td style="text-align: left;"><strong><span class="small-caps">ROUGE-L</span></strong></td>
+        <td>0.21</td>
+        <td>0.18</td>
+        <td><strong>0.40</strong></td>
+        <td>0.27</td>
+        <td>0.53</td>
+      </tr>
+      <tr>
+        <td style="text-align: left;"><strong><span class="small-caps">BLEURT</span></strong></td>
+        <td>0.29</td>
+        <td>0.25</td>
+        <td>0.25</td>
+        <td>0.27</td>
+        <td>0.51</td>
+      </tr>
+      <tr>
+        <td style="text-align: left;"><strong><span class="small-caps">TabEval</span></strong></td>
+        <td>-0.04</td>
+        <td>-0.04</td>
+        <td>-0.03</td>
+        <td>0.23</td>
+        <td>0.63</td>
+      </tr>
+      <tr>
+        <td style="text-align: left;"><strong><span class="small-caps">P-Score</span></strong></td>
+        <td><u>0.30</u></td>
+        <td><u>0.27</u></td>
+        <td>0.24</td>
+        <td><u>0.31</u></td>
+        <td><u>0.39</u></td>
+      </tr>
+      <tr>
+        <td style="text-align: left;"><strong><span class="small-caps">LLM rubric</span></strong></td>
+        <td>0.23</td>
+        <td>0.16</td>
+        <td>0.17</td>
+        <td>0.28</td>
+        <td>0.47</td>
+      </tr>
+      <tr>
+        <td style="text-align: left;"><strong><span class="small-caps">LLM ranking</span></strong></td>
+        <td>0.29</td>
+        <td>0.24</td>
+        <td>0.23</td>
+        <td>0.30</td>
+        <td>0.41</td>
+      </tr>
+      <tr>
+        <td style="text-align: left;"><strong><span class="small-caps">Multi-prompt</span></strong></td>
+        <td>0.29</td>
+        <td>0.24</td>
+        <td>0.23</td>
+        <td>0.30</td>
+        <td>0.42</td>
+      </tr>
+      <tr class="single-border-bottom">
+        <td style="text-align: left;"><strong><span class="small-caps">Multi-prompt + CoT</span></strong></td>
+        <td>0.30</td>
+        <td>0.25</td>
+        <td>0.24</td>
+        <td>0.29</td>
+        <td>0.45</td>
+      </tr>
+      <tr class="double-border-bottom">
+        <td style="text-align: left;"><strong><span class="small-caps">TabXEval</span></strong></td> <td><strong>0.44</strong></td>
+        <td><strong>0.40</strong></td>
+        <td><u>0.38</u></td>
+        <td><strong>0.34</strong></td>
+        <td><strong>0.29</strong></td>
+      </tr>
+    </tbody>
+  </table>
+</div>
